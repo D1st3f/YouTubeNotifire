@@ -2,10 +2,12 @@ from config import db_config
 import mysql.connector
 from mysql.connector import errorcode
 
+table_name = db_config["test_sql123"]["table"]
 
 def def_table(cursor, cnx):
-    cursor.execute('''
-           CREATE TABLE IF NOT EXISTS `youtube_videos` (
+
+    cursor.execute(f'''
+           CREATE TABLE IF NOT EXISTS {table_name} (
           `id` int(11)  NOT NULL AUTO_INCREMENT,
           `name` TEXT NOT NULL,
           `text` TEXT NOT NULL,
@@ -16,10 +18,10 @@ def def_table(cursor, cnx):
 
 
 def add_new_video(video, cursor, cnx):
-    cursor.execute(f"SELECT COUNT(link) FROM youtube_videos WHERE link='{video[2]}'")
+    cursor.execute(f"SELECT COUNT(link) FROM {table_name} WHERE link='{video[2]}'")
     serched = cursor.fetchall()
     if int(str(serched[0])[1:-2]) == 0:
-        cursor.execute(f"INSERT INTO `youtube_videos` (name,text,link) VALUES ('{video[0]}','{video[1]}','{video[2]}')")
+        cursor.execute(f"INSERT INTO {table_name} (name,text,link) VALUES ('{video[0]}','{video[1]}','{video[2]}')")
         cnx.commit()
         return video
     else:

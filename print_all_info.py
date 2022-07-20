@@ -10,7 +10,8 @@ def print_all():
                                       host=db_config["test_sql123"]["host"],
                                       database="test_sql123")
         cursor = cnx.cursor()
-        cursor.execute(f"SELECT * FROM youtube_videos")
+        table_name  = db_config["test_sql123"]["table"]
+        cursor.execute(f"SELECT * FROM {table_name}")
         serched = cursor.fetchall()
         for video in serched:
             print(video)

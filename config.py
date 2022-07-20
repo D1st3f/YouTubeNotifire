@@ -14,6 +14,7 @@ db_config = {
     "test_sql123": {
         "host": "db4free.net",
         "user": "admin_4opt",
-        "password": "admin_4opt"
+        "password": "admin_4opt",
+        "table" : "youtube_videos"
     }
 }
