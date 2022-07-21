@@ -3,11 +3,12 @@ yt_config = {
 }
 
 ds_config = {
-    "Discord Key": ""
+    "DISCORD_TOKEN": "OTI5MzE5NzkxNTM2MjUwODkw.GAb-sL.meddpGf68OePZl9OqFVRwjDfaKu5oIcxi_amVY",
+    "DISCORD_CHANEL" : 848237639752613949
 }
 
 sr_config = {
-    "Sleep btw searches": 0  # min 5 sec, if you input 10 it will be 15
+    "Sleep btw searches": 5  # min 5 sec, if you input 10 it will be 15
 }
 
 db_config = {
@@ -15,6 +16,6 @@ db_config = {
         "host": "db4free.net",
         "user": "admin_4opt",
         "password": "admin_4opt",
-        "table" : "youtube_videos"
+        "table" : "youtube_videos2"
     }
 }

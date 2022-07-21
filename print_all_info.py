@@ -2,7 +2,6 @@ from config import db_config
 import mysql.connector
 from mysql.connector import errorcode
 
-
 def print_all():
     try:
         cnx = mysql.connector.connect(user=db_config["test_sql123"]["user"],
