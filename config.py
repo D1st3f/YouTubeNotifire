@@ -4,7 +4,12 @@ yt_config = {
 
 ds_config = {
     "DISCORD_TOKEN": "OTI5MzE5NzkxNTM2MjUwODkw.GAb-sL.meddpGf68OePZl9OqFVRwjDfaKu5oIcxi_amVY",
-    "DISCORD_CHANEL" : 848237639752613949
+    "DISCORD_CHANEL": 848119603296600064
+}
+
+tg_config = {
+    "TELEGRAM_TOKEN": "5002946939:AAFBiHC-7SZ0j2adKbSN_QaLLZSMPfABh_Y",
+    "TELEGRAM_CHANEL": -1001237553932
 }
 
 sr_config = {
@@ -12,10 +17,11 @@ sr_config = {
 }
 
 db_config = {
-    "test_sql123": {
-        "host": "db4free.net",
-        "user": "admin_4opt",
-        "password": "admin_4opt",
-        "table" : "youtube_videos2"
+    "YouTube": {
+        "host": "localhost",
+        "port": 8889,
+        "user": "root",
+        "password": "root",
+        "table": "YouTube_1"
     }
 }

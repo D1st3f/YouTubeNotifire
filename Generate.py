@@ -3,6 +3,7 @@ from config import yt_config, ds_config, sr_config
 from requests_html import HTMLSession
 from sql_cheack import add_and_cheack_video
 
+
 def get_html():
     session = HTMLSession()
     r = session.get(yt_config["Youtube Link"])
@@ -23,14 +24,16 @@ def get_last_videos(html):
     except:
         return "SOMETHING WRONG !"
 
+
 def write_to_user(new_videos):
-    f = open('toOut.txt', 'w')
     if new_videos != []:
+        f = open('toOut.txt', 'w')
         for new_video in new_videos:
-            f.write(f"У {new_video[0]} з'явилося нове відео: {new_video[1]}. Покликання на відео: {new_video[2]}" +"\n")
+            f.write(
+                f"У {new_video[0]} з'явилося нове відео: {new_video[1]}. Покликання на відео: {new_video[2]}" + "\n")
+        f.close()
     else:
         print("pass")
-    f.close()
 
 
 while True:

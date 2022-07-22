@@ -2,17 +2,17 @@ from config import db_config
 import mysql.connector
 from mysql.connector import errorcode
 
-table_name = db_config["test_sql123"]["table"]
+table_name = db_config["YouTube"]["table"]
+
 
 def def_table(cursor, cnx):
-
     cursor.execute(f'''
            CREATE TABLE IF NOT EXISTS {table_name} (
           `id` int(11)  NOT NULL AUTO_INCREMENT,
           `name` TEXT NOT NULL,
           `text` TEXT NOT NULL,
           `link` TEXT NOT NULL,
-          PRIMARY KEY (`id`)) ENGINE = InnoDB'''
+          PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4'''
                    )
     cnx.commit()
 
@@ -30,10 +30,11 @@ def add_new_video(video, cursor, cnx):
 
 def add_and_cheack_video(last_videos):
     try:
-        cnx = mysql.connector.connect(user=db_config["test_sql123"]["user"],
-                                      password=db_config["test_sql123"]["password"],
-                                      host=db_config["test_sql123"]["host"],
-                                      database="test_sql123")
+        cnx = mysql.connector.connect(user=db_config["YouTube"]["user"],
+                                      password=db_config["YouTube"]["password"],
+                                      host=db_config["YouTube"]["host"],
+                                      database="YouTube",
+                                      port=8889)
         cursor = cnx.cursor()
         def_table(cursor, cnx)
         new_video = []
