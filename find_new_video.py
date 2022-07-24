@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 
-def def_table(cursor, cnx,channel):
+def def_table(cursor, cnx, channel):
     table_name = db_config["my_db"]["table"] + str(channel)
     cursor.execute(f'''
            CREATE TABLE IF NOT EXISTS {table_name} (
@@ -15,7 +15,7 @@ def def_table(cursor, cnx,channel):
     cnx.commit()
 
 
-def add_new_video(video, cursor, cnx,channel):
+def add_new_video(video, cursor, cnx, channel):
     table_name = db_config["my_db"]["table"] + str(channel)
     cursor.execute(f"SELECT COUNT(link) FROM {table_name} WHERE link='{video[2]}'")
     serched = cursor.fetchall()
@@ -27,7 +27,7 @@ def add_new_video(video, cursor, cnx,channel):
         return None
 
 
-def add_and_cheack_video(last_videos , channel):
+def add_and_cheack_video(last_videos, channel):
     try:
         cnx = mysql.connector.connect(user=db_config["my_db"]["user"],
                                       password=db_config["my_db"]["password"],
@@ -35,17 +35,17 @@ def add_and_cheack_video(last_videos , channel):
                                       database="my_db",
                                       )
         cursor = cnx.cursor()
-        def_table(cursor, cnx , channel)
+        def_table(cursor, cnx, channel)
         new_video = []
         for video in last_videos:
             while "'" in video[0]:
-                video[0]=video[0].replace("'", "")
+                video[0] = video[0].replace("'", "")
             while "'" in video[1]:
-                video[1]=video[1].replace("'", "")
+                video[1] = video[1].replace("'", "")
             while '"' in video[0]:
-                video[0]=video[0].replace('"', "")
+                video[0] = video[0].replace('"', "")
             while '"' in video[1]:
-                video[1]=video[1].replace('"', "")
+                video[1] = video[1].replace('"', "")
             if add_new_video(video, cursor, cnx, channel) != None:
                 new_video.append(video)
     except mysql.connector.Error as err:

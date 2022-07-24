@@ -1,5 +1,4 @@
 #   pip install mysql-connector-python
-#   pip install requests-html
 #   pip install discord.py
 #   pip install python-telegram-bot
 #   pip install python-dotenv
@@ -7,8 +6,8 @@
 yt_config = {
     "Youtube Link": ["https://www.youtube.com/channel/UCTZKGpLLemdjKZxV6owQPrg/videos",
                      "https://www.youtube.com/c/TonyPersitski/videos",
-                     "https://www.youtube.com/c/OLDboiUA/videos"],
-}
+                     "https://www.youtube.com/c/OLDboiUA/videos"
+                     ]}
 
 ds_config = {
     "DISCORD_TOKEN": "OTI5MzE5NzkxNTM2MjUwODkw.GAb-sL.meddpGf68OePZl9OqFVRwjDfaKu5oIcxi_amVY",
@@ -21,7 +20,7 @@ tg_config = {
 }
 
 sr_config = {
-    "Sleep btw searches": 15  # set delay between searches
+    "Sleep btw searches": 2  # set delay between searches
 }
 
 db_config = {
