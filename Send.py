@@ -16,14 +16,14 @@ async def try_out():
     await asyncio.sleep(sr_config["Sleep btw searches"])
     while (True):
         Channel = client.get_channel(ds_config["DISCORD_CHANEL"])
-        f = open('toOut.txt', 'r')
+        f = open('toOut.txt', 'r', encoding="utf-8")
         lines = f.readlines()
         for line in lines:
             if line != "":
                 bot.sendMessage(chat_id=tg_config["TELEGRAM_CHANEL"], text=line)
                 await Channel.send(line)
         f.close()
-        f = open('toOut.txt', 'w')
+        f = open('toOut.txt', 'w', encoding="utf-8")
         f.write("")
         f.close()
 

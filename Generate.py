@@ -1,33 +1,34 @@
 from time import sleep
-from config import yt_config, ds_config, sr_config
-from requests_html import HTMLSession
+from config import yt_config, sr_config
+import requests
 from sql_cheack import add_and_cheack_video
 
+chanel = 1
 
-def get_html():
-    session = HTMLSession()
-    r = session.get(yt_config["Youtube Link"])
-    r.html.render()
-    return r
-
-
-def get_last_videos(html):
-    try:
-        r = html
-        videos = r.html.xpath('//*[@id="video-title"]')
-        name_of_channel = r.html.xpath('//*[@id="text-container"]', first=True).text
-        last_videos = []
-        for video in videos:
-            last_videos.append([name_of_channel, video.text, ("https://www.youtube.com/" + str(video.links)[2:-2])])
-        last_videos.reverse()
-        return last_videos
-    except:
-        return "SOMETHING WRONG !"
+def get_last_videos():
+    a = ""
+    name = ""
+    for line in requests.get(yt_config["Youtube Link"][chanel-1]).text.split(
+            "\n"):
+        if "/*# sourceMappingURL=kevlar_global_styles_sass.css.map" in line:
+            a = line
+        if '<link itemprop="name" content=' in line:
+            name = (line[line.find('<link itemprop="name" content=') + 31:line.find('"></span><script')])
+    b = a.split('{')
+    last_videos = []
+    for i in range(0, len(b) - 8):
+        if '"accessibility":' in b[i]:
+            if '"accessibilityData":' in b[i + 1] and '"publishedTimeText"' in b[i + 2]:
+                last_videos.append([name, b[i + 2][9:b[i + 2].find(" автор:")], "https://www.youtube.com" + b[i + 7][b[
+                                                                                                                         i + 7].find(
+                    '"url":"') + 7:b[i + 7].find('","webPageType"')]])
+    last_videos.reverse()
+    return last_videos
 
 
 def write_to_user(new_videos):
     if new_videos != []:
-        f = open('toOut.txt', 'w')
+        f = open('toOut.txt', 'a', encoding="utf-8")
         for new_video in new_videos:
             f.write(
                 f"У {new_video[0]} з'явилося нове відео: {new_video[1]}. Покликання на відео: {new_video[2]}" + "\n")
@@ -37,12 +38,11 @@ def write_to_user(new_videos):
 
 
 while True:
-    html = get_html()
-    last_videos = get_last_videos(html)
-    if last_videos != "SOMETHING WRONG !":
-        last_videos = get_last_videos(html)
-        new_videos = add_and_cheack_video(last_videos)
-        write_to_user(new_videos)
-        sleep(sr_config["Sleep btw searches"])
+    last_videos = get_last_videos()
+    new_videos = add_and_cheack_video(last_videos, chanel)
+    write_to_user(new_videos)
+    sleep(sr_config["Sleep btw searches"])
+    if chanel == len(yt_config["Youtube Link"]):
+        chanel = 1
     else:
-        pass
+        chanel+=1

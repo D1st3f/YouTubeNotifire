@@ -1,5 +1,13 @@
+#   pip install mysql-connector-python
+#   pip install requests-html
+#   pip install discord.py
+#   pip install python-telegram-bot
+#   pip install python-dotenv
+
 yt_config = {
-    "Youtube Link": "https://www.youtube.com/channel/UCTZKGpLLemdjKZxV6owQPrg/videos",
+    "Youtube Link": ["https://www.youtube.com/channel/UCTZKGpLLemdjKZxV6owQPrg/videos",
+                     "https://www.youtube.com/c/TonyPersitski/videos",
+                     "https://www.youtube.com/c/OLDboiUA/videos"],
 }
 
 ds_config = {
@@ -13,15 +21,15 @@ tg_config = {
 }
 
 sr_config = {
-    "Sleep btw searches": 5  # min 5 sec, if you input 10 it will be 15
+    "Sleep btw searches": 15  # set delay between searches
 }
 
 db_config = {
-    "YouTube": {
-        "host": "localhost",
-        "port": 8889,
+    "my_db": {
+        "database": "my_db",
+        "host": "hp.local",
         "user": "root",
         "password": "root",
-        "table": "YouTube_1"
+        "table": "YouTube_"
     }
 }
