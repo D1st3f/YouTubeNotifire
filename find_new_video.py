@@ -27,7 +27,7 @@ def add_new_video(video, cursor, cnx, channel):
         return None
 
 
-def add_and_cheack_video(last_videos, channel):
+def get_new_video(last_videos, channel):
     try:
         cnx = mysql.connector.connect(user=db_config["my_db"]["user"],
                                       password=db_config["my_db"]["password"],

@@ -26,6 +26,6 @@ def get_last_videos(chanel):
     return last_videos
 
 
-def ggeet(chanel):
+def get_all_video(chanel):
     last_videos = get_last_videos(chanel)
     return last_videos
