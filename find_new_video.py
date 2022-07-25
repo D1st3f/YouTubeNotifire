@@ -43,11 +43,17 @@ def add_and_cheack_video(last_videos, channel):
             while "'" in video[1]:
                 video[1] = video[1].replace("'", "")
             while '"' in video[0]:
-                video[0] = video[0].replace('"', "")
+                video[0] = video[0].replace('"', "|")
             while '"' in video[1]:
-                video[1] = video[1].replace('"', "")
+                video[1] = video[1].replace('"', "|")
+            while '//' in video[0]:
+                video[0] = video[0].replace('//', "|")
+            while '//' in video[1]:
+                video[1] = video[1].replace('//', "|")
             if add_new_video(video, cursor, cnx, channel) != None:
                 new_video.append(video)
+            else:
+                break
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")

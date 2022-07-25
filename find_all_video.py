@@ -23,7 +23,6 @@ def get_last_videos(chanel):
                 limk = ("https://www.youtube.com" + b[i + 8][
                                                     b[i + 8].find('"url":"') + 7:b[i + 8].find('","webPageType"')])
                 last_videos.append([name, b[i + 2][9:b[i + 2].find(" автор:")], limk])
-    last_videos.reverse()
     return last_videos
 
 
