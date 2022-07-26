@@ -19,9 +19,14 @@ def get_last_videos(chanel):
                 last_videos.append([name, b[i + 2][9:b[i + 2].find(" автор:")], "https://www.youtube.com" + b[i + 7][b[
                                                                                                                          i + 7].find(
                     '"url":"') + 7:b[i + 7].find('","webPageType"')]])
-            if '"accessibilityData":' in b[i + 1] and '"runs":[' in b[i + 3]:
-                limk = ("https://www.youtube.com" + b[i + 8][
-                                                    b[i + 8].find('"url":"') + 7:b[i + 8].find('","webPageType"')])
+            if ('"accessibilityData":' in b[i + 1] and '"runs":[' in b[i + 3]) or (
+                    '"accessibilityData":' in b[i + 1] and 'clickTrackingParams' in b[i + 3]):
+                limk = ""
+                for c in range(0, 15):
+                    if '"url":"' in b[i + c]:
+                        limk = ("https://www.youtube.com" + b[i + c][b[i + c].find('"url":"') + 7:b[i + c].find(
+                            '","webPageType"')])
+                        break
                 last_videos.append([name, b[i + 2][9:b[i + 2].find(" автор:")], limk])
     return last_videos
 
