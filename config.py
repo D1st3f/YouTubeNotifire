@@ -39,15 +39,15 @@ yt_config = {
                      ]}
 
 ds_config = {
-    "DISCORD_TOKEN": "OTI5MzE5NzkxNTM2MjUwODkw.GAb-sL.meddpGf68OePZl9OqFVRwjDfaKu5oIcxi_amVY",
-    "DISCORD_CHANEL": [[848119603296600064, "SendEveryChannelVideo"]  # STIX НОВИНИ
+    "DISCORD_TOKEN": "INSERT YOUR TOKEN HERE",
+    "DISCORD_CHANEL": [["INSERT YOUR CHANEL HERE", "SendEveryChannelVideo"]  # DISCORD CHANEL ID AND FILTER
                       ]
 }
 
 tg_config = {
-    "TELEGRAM_TOKEN": "5002946939:AAFBiHC-7SZ0j2adKbSN_QaLLZSMPfABh_Y",
-    "TELEGRAM_CHANEL": [[-1001237553932, "OLDboi", "Tony Persitski", "soloWay gaming", "STERNENKO", "Телебачення Торонто", "Geek Journal", "ROZETKA", "AZOV media", "Kolegi Studio!", "PlayStation Україна", "MrBeast", "Канал Горобина", "MARKUS", "ТА"]
-                        ]
+    "TELEGRAM_TOKEN": "INSERT YOUR TOKEN HERE",
+    "TELEGRAM_CHANEL": [["INSERT YOUR CHANEL HERE", "OLDboi", "Tony Persitski", "soloWay gaming", "STERNENKO", "Телебачення Торонто", "Geek Journal", "ROZETKA", "AZOV media", "Kolegi Studio!", "PlayStation Україна", "MrBeast", "Канал Горобина", "MARKUS", "ТА"]
+                        ]   # TELEGRAM CHANEL ID AND FILTER
 }
 
 sr_config = {
