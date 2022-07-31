@@ -17,7 +17,7 @@ Copy the latest git release and unpack it in the desired location. To run you ne
   *  MySQL Connector - "_**pip install mysql-connector-python**_"
   *  Discord Bot - "_**pip install discord.py**_"
   *  Telegram Bot - "_**pip install python-telegram-bot**_"
-  *  Python Dotenv - "_**install python-dotenv**_"
+  *  Python Dotenv - "_**pip install python-dotenv**_"
 
 ## How to config
 * You nead to extract files to any your folder
