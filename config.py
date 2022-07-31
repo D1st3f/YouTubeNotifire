@@ -41,13 +41,16 @@ yt_config = {
 ds_config = {
     "DISCORD_TOKEN": "INSERT YOUR TOKEN HERE",
     "DISCORD_CHANEL": [["INSERT YOUR CHANEL HERE", "SendEveryChannelVideo"]  # DISCORD CHANEL ID AND FILTER
-                      ]
+                       ]
 }
 
 tg_config = {
     "TELEGRAM_TOKEN": "INSERT YOUR TOKEN HERE",
-    "TELEGRAM_CHANEL": [["INSERT YOUR CHANEL HERE", "OLDboi", "Tony Persitski", "soloWay gaming", "STERNENKO", "Телебачення Торонто", "Geek Journal", "ROZETKA", "AZOV media", "Kolegi Studio!", "PlayStation Україна", "MrBeast", "Канал Горобина", "MARKUS", "ТА"]
-                        ]   # TELEGRAM CHANEL ID AND FILTER
+    "TELEGRAM_CHANEL": [
+        ["INSERT YOUR CHANEL HERE", "OLDboi", "Tony Persitski", "soloWay gaming", "STERNENKO", "Телебачення Торонто",
+         "Geek Journal", "ROZETKA", "AZOV media", "Kolegi Studio!", "PlayStation Україна", "MrBeast", "Канал Горобина",
+         "MARKUS", "ТА"]
+    ]  # TELEGRAM CHANEL ID AND FILTER
 }
 
 sr_config = {

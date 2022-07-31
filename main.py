@@ -19,7 +19,7 @@ def deescape(escaped):
 
 
 def prepare_telegram(name, text, link):
-    return "<b>У " + name + " з'явилося нове" + 'відео - </b><a href="' + link + '">' + text + ".</a>"
+    return "<b>У " + name + " з'явилося нове " + 'відео - </b><a href="' + link + '">' + text + ".</a>"
 
 
 def prepare_discord(name, text, link):
