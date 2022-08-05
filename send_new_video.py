@@ -26,8 +26,30 @@ def send_telegram(video):
             elif deescape(video[0]) in i:
                 bot.sendMessage(chat_id=i[0], text=text_tg, parse_mode=ParseMode.HTML)
 
+def find_tumb(url):
+    url = url.replace('https://www.youtube.com/watch?v=', '')
+    url = url.replace("https://www.youtube.com/shorts/", "")
+    t = requests.get(f"https://img.youtube.com/vi/{url}/maxresdefault.jpg")
+    if not t:
+        t = requests.get(f"https://img.youtube.com/vi/{url}/hqdefault.jpg")
+        if not t:
+            t = requests.get(f"https://img.youtube.com/vi/{url}/mqdefault.jpg")
+            if not t:
+                t = requests.get(f"https://img.youtube.com/vi/{url}/sddefault.jpg")
+                if not t:
+                    return f"https://img.youtube.com/vi/{url}/sddefault.jpg"
+                else:
+                    return f"https://img.youtube.com/vi/{url}/sddefault.jpg"
+            else:
+                return f"https://img.youtube.com/vi/{url}/mqdefault.jpg"
+        else:
+            return f"https://img.youtube.com/vi/{url}/hqdefault.jpg"
+    else:
+        return f"https://img.youtube.com/vi/{url}/maxresdefault.jpg"
+
 
 def prepare_discord(name, text, link):
+    thunb_link = find_tumb(link)
     messege = {
         "username": "NotiBot",
         "avatar_url": "https://ih1.redbubble.net/image.3081029279.3778/raf,750x1000,075,t,fafafa:ca443f4786.u1.jpg"
@@ -44,7 +66,7 @@ def prepare_discord(name, text, link):
             },
             "timestamp": datetime.datetime.now().astimezone(pytz.UTC).strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
             "image": {
-                "url": f"https://i3.ytimg.com/vi/{link.replace('https://www.youtube.com/watch?v=', '')}/maxresdefault.jpg"
+                "url": thunb_link
             }
         }
     ]
