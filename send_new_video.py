@@ -76,13 +76,15 @@ def prepare_discord(name, text, link):
         {
           "type": 2,
           "style": 5,
-          "label": "📺 ПЕРЕГЛЯНУТИ 📰",
+          "emoji": {"id": "873300749700972594","name": "YouTube"},
+          "label": " ПЕРЕГЛЯНУТИ",
           "url": link
         },
         {
           "type": 2,
           "style": 5,
-          "label": "💙💛 ПІДТРИМАТИ",
+          "emoji": {"id": "873300749898104893", "name": "UKR"},
+          "label": " ПІДТРИМАТИ",
           "url": "https://savelife.in.ua/donate/#donate-army-card-once"
         }
       ]
