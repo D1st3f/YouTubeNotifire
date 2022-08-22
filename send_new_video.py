@@ -58,7 +58,6 @@ def prepare_discord(name, text, link):
         {
             "title": f"**У {deescape(name)} з'явилося нове відео.**",
             "description": f"**[{deescape(text)}]({link})**",
-            "url": link,
             "color": 16711680,
             "footer": {
                 "text": "D1st3f",
@@ -70,6 +69,26 @@ def prepare_discord(name, text, link):
             }
         }
     ]
+    messege["components"] = [
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 2,
+          "style": 5,
+          "label": "📺 ПЕРЕГЛЯНУТИ 📰",
+          "url": link
+        },
+        {
+          "type": 2,
+          "style": 5,
+          "label": "💙💛 ПІДТРИМАТИ",
+          "url": "https://savelife.in.ua/donate/#donate-army-card-once"
+        }
+      ]
+    }
+    ]
+
     return messege
 
 
