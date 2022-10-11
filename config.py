@@ -56,6 +56,7 @@ tg_config = {
 
 send_config = {
     "Debug_mode": False,  # set True and you will not any send messages
+    "Reverse": False, # set True while you create video date base
     "Debug_telegram": False,  # set True and you will not  send messages to Telegram
     "Debug_discord": False,  # set True and you will not  send messages to Discord
     "Telefram_debud": True,  # set True and you will send debug messages to your Telegram

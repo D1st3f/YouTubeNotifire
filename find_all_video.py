@@ -1,4 +1,4 @@
-from config import yt_config
+from config import yt_config, send_config
 import requests
 
 
@@ -33,4 +33,6 @@ def get_last_videos(chanel):
 
 def get_all_video(chanel):
     last_videos = get_last_videos(chanel)
+    if send_config["Reverse"]==True:
+        last_videos.reverse()
     return last_videos

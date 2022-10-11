@@ -1,7 +1,7 @@
 import datetime
 import pytz
 import telegram
-from telegram import ParseMode
+from telegram import ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
 import requests
 from config import ds_config, tg_config, send_config
 
@@ -13,18 +13,28 @@ def deescape(escaped):
 
 
 def prepare_telegram(name, text, link):
-    return "<b>У " + deescape(name) + " з'явилося нове " + 'відео - </b><a href="' + deescape(link) + '">' + \
-           deescape(text) + ".</a>"
+    return "<b>У " + deescape(name) + " з'явилося нове " + 'відео. &#13;&#10;</b><a href="'+ deescape(link) + '">' + \
+           deescape(text) + "</a>"
 
 
 def send_telegram(video):
     if send_config["Debug_telegram"] == False:
         for i in tg_config["TELEGRAM_CHANEL"]:
             text_tg = prepare_telegram(video[0], video[1], video[2])
+
+            keyboard = InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="📺 ПЕРЕГЛЯНУТИ", url=video[2]),
+                 InlineKeyboardButton(text="🇺🇦 ПІДТРИМАТИ",
+                                      url="https://savelife.in.ua/donate/#donate-army-card-once")],
+            ])
+
             if "SendEveryChannelVideo" in i:
-                bot.sendMessage(chat_id=i[0], text=text_tg, parse_mode=ParseMode.HTML)
+                bot.sendPhoto(chat_id=i[0], photo=find_tumb(video[2]), caption=text_tg, parse_mode=ParseMode.HTML,
+                              reply_markup=keyboard)
+
             elif deescape(video[0]) in i:
-                bot.sendMessage(chat_id=i[0], text=text_tg, parse_mode=ParseMode.HTML)
+                bot.sendPhoto(chat_id=i[0], photo=find_tumb(video[2]), caption=text_tg, parse_mode=ParseMode.HTML,
+                              reply_markup=keyboard)
 
 def find_tumb(url):
     url = url.replace('https://www.youtube.com/watch?v=', '')
